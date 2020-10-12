@@ -18,6 +18,13 @@ const useStorage = (file) => {
         const url = await storageRef.getDownloadURL();
         setUrl(url);
       }
+      // }, () => {
+      //   // Upload completed successfully, now we can get the download URL
+      //    const url = storageRef.getDownloadURL().then(function(downloadURL) {
+      //     console.log('File available at', downloadURL);
+      //     setUrl(url);
+      //   });
+      // }
     );
   }, [file]);
   return { progress, error, url };
