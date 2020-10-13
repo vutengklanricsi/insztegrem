@@ -33,3 +33,29 @@ const useStorage = (file) => {
 };
 
 export default useStorage;
+
+
+// const useStorage = (file) => {
+//   const [progress, setProgress] = useState(0);
+//   const [error, setError] = useState(null);
+//   const [url, setUrl] = useState(null);
+
+//   useEffect(() => {
+//     const storageRef = projectStorage.ref().child(file.name).put(file);
+//     const collectionRef = projectFirestore.collection('images')
+    
+//     storageRef.on('state_change', function(snapshot) {
+//       var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+//       console.log('Upload is ' + progress + '% done');
+//     }, (error) => {
+//         setError(error);
+//     }, () => {
+//       const url = storageRef.snapshot.ref.getDownloadURL()
+//       collectionRef.add({url: url, createdAt: timestamp});
+//       setUrl(url);
+//     })
+//   }, [file]);
+//     return { progress, error, url };
+//   };
+
+// export default useStorage
