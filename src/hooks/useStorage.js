@@ -5,7 +5,29 @@ const useStorage = (file) => {
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState(null);
   const [url, setUrl] = useState(null);
-
+  
+//   useEffect(() => {
+//     const storageRef = projectStorage.ref(file.name);
+//     const collectionRef = projectFirestore.collection('images');
+//     var uploadTask = storageRef.child('images/' + file.name).put(file);
+  
+//     uploadTask.on('state_change', // or 'state_changed'
+//     function(snapshot) {
+//     // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+//     var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+//     setProgress(percentage);
+//     }, (error) => {
+//     console.log(error);
+//     setError(error);
+//     }, () => {
+//       const url = uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+//         collectionRef.add({url: url, createdAt: timestamp});
+//         setUrl(url);
+//       })
+//     })
+//   }, [file]);
+//   return { progress, error, url };
+// }
   useEffect(() => {
     const storageRef = projectStorage.ref(file.name);
     const collectionRef = projectFirestore.collection('images')
@@ -33,30 +55,5 @@ const useStorage = (file) => {
   return { progress, error, url };
 };
 
+
 export default useStorage;
-
-
-// const useStorage = (file) => {
-//   const [progress, setProgress] = useState(0);
-//   const [error, setError] = useState(null);
-//   const [url, setUrl] = useState(null);
-
-//   useEffect(() => {
-//     const storageRef = projectStorage.ref().child(file.name).put(file);
-//     const collectionRef = projectFirestore.collection('images')
-    
-//     storageRef.on('state_change', function(snapshot) {
-//       var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-//       console.log('Upload is ' + progress + '% done');
-//     }, (error) => {
-//         setError(error);
-//     }, () => {
-//       const url = storageRef.snapshot.ref.getDownloadURL()
-//       collectionRef.add({url: url, createdAt: timestamp});
-//       setUrl(url);
-//     })
-//   }, [file]);
-//     return { progress, error, url };
-//   };
-
-// export default useStorage
