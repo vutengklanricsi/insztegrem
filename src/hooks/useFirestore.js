@@ -16,6 +16,8 @@ const useFirestore = (collection) => {
           //* egy dokumentum
         });
         setDocs(documents);
+        console.log(documents);
+
       });
 
     return () => unsub();
